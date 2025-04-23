@@ -5,7 +5,10 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://kingfisher-kcfx.onrender.com',
+  methods: ['GET', 'POST']
+}));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '12march_withmaggi.html'));
