@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, '12march_withmaggi.html'));
 });
 
 //extra code, may need at some point - 22 April
