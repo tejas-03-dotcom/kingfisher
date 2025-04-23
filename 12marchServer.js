@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
-
+const path = require('path');    //updated by tejas bhatale repo nic
 const app = express();
 app.use(cors());
 
@@ -18,12 +18,11 @@ app.get('/api/option-chain', async (req, res) => {
 
     try {
         const response = await axios.get(`https://www.nseindia.com/api/option-chain-indices?symbol=${symbol}`, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0',
-                'Accept-Language': 'en-US,en;q=0.9',
-                'Referer': 'https://www.nseindia.com/'
-            }
+            headers: { }
         });
+                //'User-Agent': 'Mozilla/5.0', Removed by tejas bhatale
+                //'Accept-Language': 'en-US,en;q=0.9',
+                //'Referer': 'https://www.nseindia.com/'
 
         const records = response.data.records;
         if (!records || !records.data) {
