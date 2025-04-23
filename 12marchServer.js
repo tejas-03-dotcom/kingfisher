@@ -15,25 +15,25 @@ app.get('/', (req, res) => {
 });
 
 //extra code, may need at some point - 22 April
-// app.get('/api/fetch-nse', async (req, res) => {
-//   const response = await axios.get('https://www.nseindia.com/option-chain', {
-//     headers: {
-//       'User-Agent': 'Mozilla/5.0',  // okay to set in backend
-//       'Accept': 'application/json'
+app.get('/api/fetch-nse', async (req, res) => {
+   const response = await axios.get('https://www.nseindia.com/option-chain', {
+     headers: {
+       'User-Agent': 'Mozilla/5.0',  // okay to set in backend
+      'Accept': 'application/json'
 
-//     }
-//   });
-//   res.send(response.data);
-// });
+     }
+   });
+  res.send(response.data);
+ });
 
 
 function selectOptionType(strikePrice, marketPrice) {
     return strikePrice < marketPrice ? "Call" : "Put";
 }
 
-// app.get('/', (req, res) => {
-//   res.send('Welcome to OptionChain API');
-// });
+ app.get('/', (req, res) => {
+   res.send('Welcome to OptionChain API');
+ });
 
 app.get('/api/option-chain', async (req, res) => {
     const { symbol, expiry } = req.query;
@@ -87,12 +87,12 @@ app.get('/api/option-chain', async (req, res) => {
     }
 });
 
-//         res.json(optionData);
-//     // } catch (error) {
-//     //     console.error('Error fetching data:', error);
-//     //     res.status(500).json({ error: 'Failed to fetch data from NSE API.' });
-//     // }
-// //});
+         res.json(optionData);
+} catch (error) {
+   console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Failed to fetch data from NSE API.' });
+ }
+});
         
 
 const PORT = process.env.PORT || 3000;
