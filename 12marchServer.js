@@ -87,12 +87,12 @@ app.get('/api/option-chain', async (req, res) => {
     }
 });
 
-         res.json(optionData);
-} catch (error) {
-   console.error('Error fetching data:', error);
-    res.status(500).json({ error: 'Failed to fetch data from NSE API.' });
- }
-});
+//          res.json(optionData);
+// } catch (error) {
+//    console.error('Error fetching data:', error);
+//     res.status(500).json({ error: 'Failed to fetch data from NSE API.' });
+//  }
+// });
         
 
 const PORT = process.env.PORT || 3000;
