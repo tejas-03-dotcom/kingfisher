@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 //     headers: {
 //       'User-Agent': 'Mozilla/5.0',  // okay to set in backend
 //       'Accept': 'application/json'
+
 //     }
 //   });
 //   res.send(response.data);
@@ -44,7 +45,8 @@ app.get('/api/option-chain', async (req, res) => {
                'User-Agent': 'Mozilla/5.0',
                'Accept-Language': 'en-US,en;q=0.9',
                 'Referer': 'https://www.nseindia.com/',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'Access-Control-Allow-Origin': '*'               //updated by tejasbhatale
                     }
         });
         const records = response.data.records;
