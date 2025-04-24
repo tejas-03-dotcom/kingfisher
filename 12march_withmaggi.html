@@ -436,14 +436,23 @@
         }
 
         // Fetch real India VIX data from NSE
+        // async function fetchIndiaVIX() {
+        //     try {
+        //         if (!nseCookies) {
+        //             await fetchNSECookies();      04-24-25 4 : 10 pm
+        //             if (!nseCookies) {
+        //                 throw new Error("Failed to get NSE cookies");
+        //             }
+        //         }
         async function fetchIndiaVIX() {
             try {
-                if (!nseCookies) {
-                    await fetchNSECookies();
-                    if (!nseCookies) {
-                        throw new Error("Failed to get NSE cookies");
-                    }
-                }
+                const response = await axios.get('https://kingfisher-kcfv.onrender.com/api/nse/india-vix');
+                return response.data.vix;
+            } catch (error) {
+                console.error("Error fetching India VIX:", error);
+                return null;
+            }
+        }
 
                 const response = await axios.get('https://www.nseindia.com/api/option-chain-indices?symbol=INDIAVIX', {
                     headers: {
