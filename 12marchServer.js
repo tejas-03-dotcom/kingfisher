@@ -5,7 +5,7 @@ const path = require('path');
 
 const app = express();
 app.use(cors({
-  origin: 'https://kingfisher-kcfx.onrender.com',
+  origin: 'https://kingfisher-kcfv.onrender.com',
   methods: ['GET', 'POST']
 }));
 
