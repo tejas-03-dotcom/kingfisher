@@ -4,10 +4,10 @@ const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 
-//const app = express();
+const app = express();
 
 // Use cookie parser
-app.use(cookieParser());
+//app.use(cookieParser());
 
 // Enable CORS for your frontend domain
 app.use(cors({
