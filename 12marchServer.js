@@ -17,7 +17,7 @@ app.get('/api/option-chain', async (req, res) => {
     }
 
     try {
-        const response = await axios.get(`https://www.nseindia.com/api/option-chain-indices?symbol=${symbol}`, {
+        const response = await axios.get(`https://kingfisher-kcfv.onrender.com/api/option-chain-indices?symbol=${symbol}`, {
             headers: { }
         });
                 //'User-Agent': 'Mozilla/5.0', Removed by tejas bhatale
