@@ -4,6 +4,23 @@ const cors = require('cors');
 const path = require('path');    //updated by tejas bhatale repo nic
 const app = express();
 app.use(cors());
+origin: 'https://kingfisher-kcfv.onrender.com',
+  methods: ['GET', 'POST']
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '12march_withmaggi.html'));
+});
+
+//extra code, may need at some point - 22 April
+app.get('/api/fetch-nse', async (req, res) => {
+   const response = await axios.get('https://www.nseindia.com/option-chain', {
+     headers: {
+       'User-Agent': 'Mozilla/5.0',  // okay to set in backend
+      'Accept': 'application/json'
+
+     }
+   });
+  res.send(response.data);
+ });
 
 function selectOptionType(strikePrice, marketPrice) {
     return strikePrice < marketPrice ? "Call" : "Put";
