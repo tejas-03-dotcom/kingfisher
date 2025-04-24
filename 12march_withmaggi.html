@@ -284,11 +284,11 @@
             const today = new Date();
             let expiryDate = new Date(today);
 
-            // Find next Thursday (NIFTY weekly expiry)
-            expiryDate.setDate(today.getDate() + ((4 - today.getDay() + 7) % 7));
-            if (expiryDate <= today) {
-                expiryDate.setDate(expiryDate.getDate() + 7);
-            }
+            // // Find next Thursday (NIFTY weekly expiry)
+            // expiryDate.setDate(today.getDate() + ((4 - today.getDay() + 7) % 7));
+            // if (expiryDate <= today) {
+            //     expiryDate.setDate(expiryDate.getDate() + 7);
+            // }
 
             // Format as YYYY-MM-DD for date input
             const formattedDate = expiryDate.toISOString().split('T')[0];
@@ -425,7 +425,9 @@
                     headers: {
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
                         'Accept-Language': 'en-US,en;q=0.9'
-                    }
+                        'Referer': 'https://www.nseindia.com/',
+                        'Cookie': nseCookies
+                    }        
                 });
                 nseCookies = response.headers['set-cookie'].join('; ');
                 return nseCookies;
@@ -458,7 +460,9 @@
                     headers: {
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
                         'Accept-Language': 'en-US,en;q=0.9',
-                        'Cookie': nseCookies
+                        'Cookie': nseCookies,
+                        'Referer': 'https://www.nseindia.com/'
+                        
                     }
                 });
 
@@ -493,7 +497,7 @@
         // Fetch data from API
         async function fetchData(asset, expiry) {
             try {
-                const response = await axios.get(`https://kingfisher-kcfv.onrender.com/api/option-chain?symbol=${asset}&expiry=${expiry}`);
+                const response = await axios.get(`/api/option-chain?symbol=${asset}&expiry=${expiry}`);
                 return response.data;
             } catch (error) {
                 console.error("Error fetching data:", error);
