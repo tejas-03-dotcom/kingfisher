@@ -1,4 +1,3 @@
-//all server file is copied from nicolas repo
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
